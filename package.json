@@ -2,6 +2,10 @@
   "name": "koa-restapi-template",
   "version": "1.0.0",
   "description": "Template for REST API using framework - koa,db - PostgresSql,ORM - objection",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Hamalkari/Koa-REST-API-Template.git"
+  },
   "main": "src/app.js",
   "scripts": {
     "dev": "nodemon --exec babel-node src/app.js",
@@ -21,7 +25,7 @@
     "objection"
   ],
   "author": "Ivanov Vyacheslav <kosha.1997@bk.ru>",
-  "license": "ISC",
+  "license": "MIT",
   "devDependencies": {
     "@babel/cli": "^7.8.4",
     "@babel/core": "^7.8.6",
