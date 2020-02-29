@@ -1,0 +1,54 @@
+{
+  "name": "koa-restapi-template",
+  "version": "1.0.0",
+  "description": "Template for REST API using framework - koa,db - PostgresSql,ORM - objection",
+  "main": "src/app.js",
+  "scripts": {
+    "dev": "nodemon --exec babel-node src/app.js",
+    "start": "node src/index.js",
+    "format": "prettier --write \"**/*.(js|json|yaml|yml)\"",
+    "lint": "eslint \"**/*.js\"",
+    "migrate": "knex migrate:latest",
+    "rollback": "knex migrate:rollback",
+    "seed": "knex seed:run"
+  },
+  "keywords": [
+    "koa",
+    "template",
+    "starter-kit",
+    "templating",
+    "restapi",
+    "objection"
+  ],
+  "author": "Ivanov Vyacheslav <kosha.1997@bk.ru>",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/cli": "^7.8.4",
+    "@babel/core": "^7.8.6",
+    "@babel/node": "^7.8.4",
+    "@babel/preset-env": "^7.8.6",
+    "eslint": "^6.1.0",
+    "eslint-config-airbnb": "^18.0.1",
+    "eslint-config-prettier": "^6.10.0",
+    "eslint-plugin-import": "^2.18.2",
+    "eslint-plugin-jsx-a11y": "^6.2.3",
+    "eslint-plugin-prettier": "^3.1.2",
+    "eslint-plugin-react": "^7.14.3",
+    "eslint-plugin-react-hooks": "^1.7.0",
+    "nodemon": "^2.0.2",
+    "prettier": "^1.19.1"
+  },
+  "dependencies": {
+    "@hapi/joi": "^17.1.0",
+    "@koa/cors": "^3.0.0",
+    "dotenv": "^8.2.0",
+    "knex": "^0.20.10",
+    "koa": "^2.11.0",
+    "koa-bodyparser": "^4.2.1",
+    "koa-helmet": "^5.2.0",
+    "koa-logger": "^3.2.1",
+    "koa-router": "^8.0.8",
+    "objection": "^2.1.3",
+    "pg": "^7.18.2"
+  }
+}
