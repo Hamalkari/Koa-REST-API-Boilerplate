@@ -3,7 +3,7 @@ import { db } from './config';
 
 const BASE_PATH = path.join(__dirname, 'db');
 
-export default {
+module.exports = {
   development: {
     client: 'pg',
     connection: {
@@ -24,4 +24,4 @@ export default {
       max: 10,
     },
   },
-};
+}

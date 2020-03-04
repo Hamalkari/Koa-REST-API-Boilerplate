@@ -13,9 +13,10 @@
     "build": "babel ./src -d ./dist -s",
     "format": "prettier --write \"**/*.(js|json|yaml|yml)\"",
     "lint": "eslint \"**/*.js\"",
-    "migrate": "knex migrate:latest",
-    "rollback": "knex migrate:rollback",
-    "seed": "knex seed:run"
+    "knex": "babel-node node_modules/knex/bin/cli.js --knexfile=./src/knexfile.js",
+    "migrate": "npm run knex -- migrate:latest",
+    "rollback": "npm run knex -- migrate:rollback",
+    "seed": "npm run knex -- seed:run"
   },
   "keywords": [
     "koa",
