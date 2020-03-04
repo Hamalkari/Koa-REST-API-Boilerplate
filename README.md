@@ -39,32 +39,41 @@ This template use the following technologies:
 - file **knexfile.js** - our config for database
 - file **app.js** - Here we create server and connect to database
 - folder **utils** - for util function
-- folder **services** - Here we read and write data to database
+- folder **services** - Global services like mail
 - file **db/index.js** - Here we create knex with knexfile config
 - folder **config** - Here we import .env file, create config vars and export them
 - folder **api** - Here we have our main core for api
 - folder **api/controllers** - Here we handles incoming requests, validate them and sends response back to the client. It uses **services** to iteract with database.
 - folder **api/routes** - Here we define our API Endpoints.
 - folder **api/middleware** - This folder includes all the API's global middleware like authentication.
+- folder **api/services** - Here we read and write data to database
 - file **api/server.js** - Here we create koa app and use koa middleware and add our routes to the app.
 ```
 📦src
  ┣ 📂api
  ┃ ┣ 📂controllers
+ ┃ ┃ ┗ 📜.gitkeep
  ┃ ┣ 📂middleware
  ┃ ┃ ┗ 📜error.js
  ┃ ┣ 📂routes
  ┃ ┃ ┗ 📜index.js
+ ┃ ┣ 📂services
+ ┃ ┃ ┗ 📜.gitkeep
  ┃ ┗ 📜server.js
  ┣ 📂config
  ┃ ┗ 📜index.js
  ┣ 📂db
  ┃ ┣ 📂migrations
+ ┃ ┃ ┗ 📜.gitkeep
  ┃ ┣ 📂models
+ ┃ ┃ ┗ 📜.gitkeep
  ┃ ┣ 📂seeds
+ ┃ ┃ ┗ 📜.gitkeep
  ┃ ┗ 📜index.js
  ┣ 📂services
+ ┃ ┗ 📜.gitkeep
  ┣ 📂utils
+ ┃ ┗ 📜.gitkeep
  ┣ 📜app.js
  ┗ 📜knexfile.js
 ```
@@ -85,7 +94,7 @@ npm install
 npm install -g knex
 npm install -g nodemon
 ```
-4. Change the [.env-example](/.env-example) file. How to change .env file you can read below [here](#env-file)
+4. Rename the [.env-example](/.env-example) file to **.env**. How to change .env file you can read below [here](#env-file)
 5. Run the server using command:
 ```sh
 npm run dev
@@ -121,6 +130,8 @@ DB_HOST='localhost'
 |`npm run start`| Start your app. Need in production.|
 |`npm run format`| Format your code, beatify code.|
 |`npm run lint`| Run eslint on your js files.|
+|`npm run knex`| Use this script if you want use knex cli.|
+|`npm run knex -- migrate:make your_migrate_name`| Create migrate with your name.|
 |`npm run migrate` | Update the database migrations.|
 |`npm run rollback` | Rollback the last batch of migrations.|
 |`npm run seed`|  Run seed files.|
