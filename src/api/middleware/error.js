@@ -1,32 +1,32 @@
-import { NotFoundError, DBError } from 'objection';
+import { debug } from 'debug';
+import {
+  UnknownEndpointError,
+  InvalidRequestBodyFormatError,
+  NotFoundError,
+} from '../errors';
+import Response from '../utils/response';
+
+const err = debug('koa:error');
 
 async function errorHandler(ctx, next) {
   try {
     await next();
-  } catch (error) {
-    if (error instanceof NotFoundError) {
-      ctx.status = 404;
-      ctx.body = {
-        status: 'error',
-        type: 'NotFound',
-        message: error.message,
-      };
-    } else if (error instanceof DBError) {
-      ctx.status = 500;
-      ctx.body = {
-        status: 'error',
-        type: 'DatabaseError',
-        message: error.message,
-      };
-    } else {
-      ctx.status = error.status || error.statusCode || 500;
-      ctx.body = {
-        status: 'error',
-        type: error.type,
-        message: error.message,
-      };
-    }
 
+    if (!ctx.body && (!ctx.status || ctx.status === 404)) {
+      return Response.notFound(
+        ctx,
+        new UnknownEndpointError('The requested endpoint does not exist.'),
+      );
+    }
+  } catch (error) {
+    err('An error occured: %s', error.name);
+    if (error instanceof InvalidRequestBodyFormatError) {
+      Response.unprocessableEntity(ctx, error);
+    } else if (error instanceof NotFoundError) {
+      Response.notFound(ctx, error);
+    } else {
+      Response.internalServerError(ctx, error);
+    }
     ctx.app.emit('error', error, ctx);
   }
 }

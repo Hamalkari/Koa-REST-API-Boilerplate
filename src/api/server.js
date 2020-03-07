@@ -1,11 +1,11 @@
 import Koa from 'koa';
-import bodyParser from 'koa-bodyparser';
 import cors from '@koa/cors';
 import helmet from 'koa-helmet';
 import logger from 'koa-logger';
 import { env } from '../config';
 import routes from './routes';
 import errorHandler from './middleware/error';
+import bodyParser from './middleware/body-parser';
 
 const app = new Koa();
 
