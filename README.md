@@ -1,9 +1,9 @@
 <div align="center">
-  <a href="https://github.com/Hamalkari/Koa-REST-API-Template" title="Koa REST API Template">
+  <a href="https://github.com/Hamalkari/Koa-REST-API-Boilerplate" title="Koa REST API Boilerplate">
     <img alt="Koa REST API Template" src="https://habrastorage.org/getpro/habr/post_images/3a9/b5c/98c/3a9b5c98c384865ed6f78994cf9c0444.gif" width="240px" />
   </a>
   <br />
-  <h1>Koa REST API Template</h1>
+  <h1>Koa REST API Boilerplate</h1>
 </div>
 
 [![License][license-image]][license-url]
@@ -21,9 +21,9 @@
 
 ## About the project
 
-A simple/structured Koa template with basic resourses to start make your api. 
+A simple/structured Koa Boilerplate with basic resourses to start make your api. 
 
-Koa REST API Template is a basic RESTful API Template build on top of koa framework.
+Koa REST API Boilerplate is a basic RESTful API Boilerplate build on top of koa framework.
 
 You can use ES6 and high syntax for developing your REST API.
 
@@ -38,13 +38,15 @@ This template use the following technologies:
 ## About file structure
 - file **knexfile.js** - our config for database
 - file **app.js** - Here we create server and connect to database
-- folder **utils** - for util function
 - folder **services** - Global services like mail
 - file **db/index.js** - Here we create knex with knexfile config
 - folder **config** - Here we import .env file, create config vars and export them
 - folder **api** - Here we have our main core for api
 - folder **api/controllers** - Here we handles incoming requests, validate them and sends response back to the client. It uses **services** to iteract with database.
 - folder **api/routes** - Here we define our API Endpoints.
+- folder **api/utils** - for util function
+- folder **api/errors** - Here we define our custrom error classes
+- folder **api/schema** - Here we define @hapi/joi schema for validation request
 - folder **api/middleware** - This folder includes all the API's global middleware like authentication.
 - folder **api/services** - Here we read and write data to database
 - file **api/server.js** - Here we create koa app and use koa middleware and add our routes to the app.
@@ -53,12 +55,24 @@ This template use the following technologies:
  ┣ 📂api
  ┃ ┣ 📂controllers
  ┃ ┃ ┗ 📜.gitkeep
+ ┃ ┣ 📂errors
+ ┃ ┃ ┣ 📜index.js
+ ┃ ┃ ┣ 📜internal-server.js
+ ┃ ┃ ┣ 📜invalid-request-body-format.js
+ ┃ ┃ ┣ 📜not-found.js
+ ┃ ┃ ┗ 📜unknown-endpoint.js
  ┃ ┣ 📂middleware
- ┃ ┃ ┗ 📜error.js
+ ┃ ┃ ┣ 📜body-parser.js
+ ┃ ┃ ┣ 📜error.js
+ ┃ ┃ ┗ 📜schemaValidator.js
  ┃ ┣ 📂routes
  ┃ ┃ ┗ 📜index.js
+ ┃ ┣ 📂schema
+ ┃ ┃ ┗ 📜.gitkeep
  ┃ ┣ 📂services
  ┃ ┃ ┗ 📜.gitkeep
+ ┃ ┣ 📂utils
+ ┃ ┃ ┗ 📜response.js
  ┃ ┗ 📜server.js
  ┣ 📂config
  ┃ ┗ 📜index.js
@@ -72,8 +86,6 @@ This template use the following technologies:
  ┃ ┗ 📜index.js
  ┣ 📂services
  ┃ ┗ 📜.gitkeep
- ┣ 📂utils
- ┃ ┗ 📜.gitkeep
  ┣ 📜app.js
  ┗ 📜knexfile.js
 ```
@@ -83,7 +95,7 @@ This template use the following technologies:
 Let's start, you need to do the following instructions:
 1. Clone the repo
 ```sh
-git clone https://github.com/Hamalkari/Koa-REST-API-Template.git
+git clone https://github.com/Hamalkari/Koa-REST-API-Boilerplate.git
 ```
 2. Install all NPM packages
 ```sh
@@ -140,7 +152,7 @@ DB_HOST='localhost'
 ## Contact
 **Ivanov Vyacheslav** - kosha.1997@bk.ru,https://vk.com/id143203503
 
-Project Url - https://github.com/Hamalkari/Koa-REST-API-Template
+Project Url - https://github.com/Hamalkari/Koa-REST-API-Boilerplate
 
 ## License
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details
