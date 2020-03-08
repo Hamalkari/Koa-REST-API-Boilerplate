@@ -1,14 +1,15 @@
 import dotenv from 'dotenv';
-import { resolve } from 'path';
+import { resolve, normalize } from 'path';
 
 dotenv.config({
   path: resolve(__dirname, '../../.env'),
 });
 
-export const env = process.env.NODE_ENV || 'development';
-export const port = process.env.PORT || 3000;
-export const apiVersion = process.env.API_VERSION || 1;
-export const db = {
+const root = normalize(`${__dirname}/../../`);
+const env = process.env.NODE_ENV || 'development';
+const port = process.env.PORT || 3000;
+const apiVersion = process.env.API_VERSION || 1;
+const db = {
   database:
     process.env.DB_DATABASE +
     (process.env.NODE_ENV === 'testing' ? '_test' : ''),
@@ -17,3 +18,7 @@ export const db = {
   dialect: process.env.DB_DIALECT,
   host: process.env.DB_HOST,
 };
+const logLevel =
+  process.env.LOG_LEVEL || (env === 'production' ? 'info' : 'debug');
+
+export { root, env, port, apiVersion, db, logLevel };

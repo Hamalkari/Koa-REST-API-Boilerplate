@@ -1,8 +1,8 @@
 import Koa from 'koa';
 import cors from '@koa/cors';
 import helmet from 'koa-helmet';
-import logger from 'koa-logger';
 import responseTime from 'koa-response-time';
+import koaLogger from 'koa-logger';
 import { env } from '../config';
 import routes from './routes';
 import errorHandler from './middleware/error';
@@ -12,7 +12,7 @@ const app = new Koa();
 
 if (env === 'development') {
   app.use(responseTime());
-  app.use(logger());
+  app.use(koaLogger());
 }
 
 app.use(errorHandler);
@@ -22,9 +22,5 @@ app.use(bodyParser());
 
 app.use(routes.routes());
 app.use(routes.allowedMethods());
-
-app.on('error', (err, ctx) => {
-  console.error(err, ctx);
-});
 
 export default app;

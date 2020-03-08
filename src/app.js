@@ -2,7 +2,12 @@ import { createServer } from 'http';
 import { Model } from 'objection';
 import { port } from './config/index';
 import app from './api/server';
+import logger from './api/utils/logger';
 import knex from './db';
+
+app.on('error', (err, ctx) => {
+  logger.error(err);
+});
 
 const server = createServer(app.callback());
 
