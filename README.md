@@ -10,6 +10,7 @@
 [![NPM version][npm-img]][npm-url]
 
 ## Table of contents
+* [Todo](#todo)
 * [About the project](#about-the-project)
   * [Technologies](#technologies)
 * [About file structure](#about-file-structure)
@@ -18,6 +19,9 @@
 * [Scripts](#scripts)
 * [Contact](#contact)
 * [License](#license)
+
+## Todo
+- [ ] Add logger
 
 ## About the project
 
