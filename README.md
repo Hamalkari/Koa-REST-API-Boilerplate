@@ -21,7 +21,7 @@
 * [License](#license)
 
 ## Todo
-- [ ] Add logger
+- [x] Add logger
 
 ## About the project
 
@@ -33,7 +33,8 @@ You can use ES6 and high syntax for developing your REST API.
 
 ### Technologies
 This template use the following technologies:
-* Framework [Koa](https://koajs.com/) 
+* Framework [Koa](https://koajs.com/)
+* Bunyan logger [Bunyan](https://github.com/trentm/node-bunyan)
 * ORM [Objection](https://vincit.github.io/objection.js/) 
 * [Babel](https://babeljs.io/) 
 * Airbnb config [Eslint](https://eslint.org/) 
@@ -76,6 +77,7 @@ This template use the following technologies:
  ┃ ┣ 📂services
  ┃ ┃ ┗ 📜.gitkeep
  ┃ ┣ 📂utils
+ ┃ ┃ ┣ 📜logger.js
  ┃ ┃ ┗ 📜response.js
  ┃ ┗ 📜server.js
  ┣ 📂config
@@ -122,6 +124,7 @@ npm run dev
 | NODE_ENV | Environment for your app developing. |
 | PORT | Port on which the server starts.|
 | API_VERSION | Version of your api. |
+| LOG_LEVEL | Level of logger such as ('info','debug')|
 | DB_DATABASE | Name of your database. |
 | DB_USER | Username of your user database. |
 | DB_PASSWORD | Password of your user database. | 
@@ -130,6 +133,8 @@ npm run dev
 NODE_ENV='development'
 PORT=5000
 API_VERSION=1
+LOG_LEVEL='debug'
+
 
 # DATABASE
 DB_DATABASE=name
