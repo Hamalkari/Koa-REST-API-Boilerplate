@@ -1,8 +1,6 @@
-import Router from 'koa-router';
-import { apiVersion } from '../../config';
+import combineRouters from 'koa-combine-routers';
+// import your single routers
 
-const router = new Router({
-  prefix: `/api/${apiVersion}`,
-});
+const router = combineRouters();
 
 export default router;

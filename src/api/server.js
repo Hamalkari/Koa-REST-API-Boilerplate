@@ -4,9 +4,9 @@ import helmet from 'koa-helmet';
 import responseTime from 'koa-response-time';
 import koaLogger from 'koa-logger';
 import { env } from '../config';
-import routes from './routes';
 import errorHandler from './middleware/error';
 import bodyParser from './middleware/body-parser';
+import router from './routes';
 
 const app = new Koa();
 
@@ -19,8 +19,6 @@ app.use(errorHandler);
 app.use(helmet());
 app.use(cors());
 app.use(bodyParser());
-
-app.use(routes.routes());
-app.use(routes.allowedMethods());
+app.use(router());
 
 export default app;

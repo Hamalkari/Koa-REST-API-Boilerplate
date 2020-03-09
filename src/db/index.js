@@ -1,6 +1,7 @@
 import Knex from 'knex';
 import { env } from '../config';
 import knexConfig from '../knexfile';
+import logger from '../api/utils/logger';
 
 const knex = Knex(knexConfig[env]);
 
@@ -11,7 +12,7 @@ knex
     console.log('DB has been successfully connected');
   })
   .catch(err => {
-    // Failure / timeout
+    logger.error(err.message);
     throw err;
   });
 
