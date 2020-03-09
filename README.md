@@ -21,7 +21,7 @@
 * [License](#license)
 
 ## Todo
-- [x] Add logger
+- [ ] Change logger to winston
 
 ## About the project
 
@@ -123,7 +123,6 @@ npm run dev
 |-----|-------|
 | NODE_ENV | Environment for your app developing. |
 | PORT | Port on which the server starts.|
-| API_VERSION | Version of your api. |
 | LOG_LEVEL | Level of logger such as ('info','debug')|
 | DB_DATABASE | Name of your database. |
 | DB_USER | Username of your user database. |
@@ -132,7 +131,6 @@ npm run dev
 ```sh
 NODE_ENV='development'
 PORT=5000
-API_VERSION=1
 LOG_LEVEL='debug'
 
 
