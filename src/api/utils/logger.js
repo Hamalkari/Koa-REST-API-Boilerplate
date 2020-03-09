@@ -1,28 +1,50 @@
-import bunyan from 'bunyan';
+// import bunyan from 'bunyan';
+import { createLogger, format, transports } from 'winston';
 import path from 'path';
 import { root, env, logLevel } from '../../config/index';
 
-const logger = bunyan.createLogger({
-  name: 'koa-rest',
+const errorFilePath = path.join(root, `logs/${env}-error.log`);
+
+const consoleFormat = format.combine(
+  format.colorize({
+    colors: {
+      info: 'blue',
+      error: 'red',
+    },
+  }),
+  format.timestamp({
+    format: new Date(Date.now()).toUTCString(),
+  }),
+  format.printf(info => `${info.timestamp} | ${info.level} | ${info.message}`),
+);
+
+const errorFormat = format.combine(
+  format.timestamp({
+    format: new Date(Date.now()).toUTCString(),
+  }),
+  format.json(),
+);
+
+const logger = createLogger({
   level: logLevel,
-  serializers: bunyan.stdSerializers,
-  streams: [
-    {
+  format: format.json(),
+  transports: [
+    new transports.Console({
       level: 'info',
-      stream: process.stdout,
-    },
-    {
-      level: 'debug',
-      stream: process.stderr,
-    },
-    {
-      type: 'rotating-file',
+      format: consoleFormat,
+    }),
+    new transports.File({
       level: 'error',
-      path: path.join(root, `logs/${env}-error.log`),
-      period: '1d',
-      count: 7,
-    },
+      filename: errorFilePath,
+      format: errorFormat,
+    }),
   ],
 });
+
+logger.stream = {
+  write(message) {
+    logger.info(message);
+  },
+};
 
 export default logger;

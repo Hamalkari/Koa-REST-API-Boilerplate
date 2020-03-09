@@ -14,7 +14,7 @@ const server = createServer(app.callback());
 Model.knex(knex);
 
 server.listen(port, () => {
-  console.log(
+  logger.info(
     `✅  API server listening on http://localhost:${port}, in ${env}`,
   );
 });

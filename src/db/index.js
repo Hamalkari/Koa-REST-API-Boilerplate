@@ -9,7 +9,7 @@ const knex = Knex(knexConfig[env]);
 knex
   .raw("SELECT 'test connection';")
   .then(() => {
-    console.log('DB has been successfully connected');
+    logger.info('DB connected successfully');
   })
   .catch(err => {
     logger.error(err.message);
