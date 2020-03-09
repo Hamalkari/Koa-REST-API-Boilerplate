@@ -34,7 +34,7 @@ You can use ES6 and high syntax for developing your REST API.
 ### Technologies
 This template use the following technologies:
 * Framework [Koa](https://koajs.com/)
-* Bunyan logger [Bunyan](https://github.com/trentm/node-bunyan)
+* Winston logger [Winston](https://github.com/winstonjs/winston)
 * ORM [Objection](https://vincit.github.io/objection.js/) 
 * [Babel](https://babeljs.io/) 
 * Airbnb config [Eslint](https://eslint.org/) 
