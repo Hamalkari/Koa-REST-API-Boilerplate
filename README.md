@@ -22,7 +22,7 @@
 
 ## Todo
 - [x] Change logger to winston
-- [ ] Add graceful shutdown server 
+- [x] Add graceful shutdown server 
 
 ## About the project
 
