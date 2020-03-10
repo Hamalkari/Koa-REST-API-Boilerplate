@@ -1,9 +1,9 @@
 // import bunyan from 'bunyan';
 import { createLogger, format, transports } from 'winston';
 import path from 'path';
-import { root, env, logLevel } from '../../config/index';
+import { rootPath, env, logLevel } from '../../config/index';
 
-const errorFilePath = path.join(root, `logs/${env}-error.log`);
+const errorFilePath = path.join(rootPath, `logs/${env}-error.log`);
 
 const consoleFormat = format.combine(
   format.colorize({
@@ -40,11 +40,5 @@ const logger = createLogger({
     }),
   ],
 });
-
-logger.stream = {
-  write(message) {
-    logger.info(message);
-  },
-};
 
 export default logger;

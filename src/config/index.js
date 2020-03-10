@@ -1,11 +1,12 @@
 import dotenv from 'dotenv';
-import { resolve, normalize } from 'path';
+import { path } from 'app-root-path';
+
+const rootPath = path;
 
 dotenv.config({
-  path: resolve(__dirname, '../../.env'),
+  path: `${rootPath}/.env`,
 });
 
-const root = normalize(`${__dirname}/../../`);
 const env = process.env.NODE_ENV || 'development';
 const port = process.env.PORT || 3000;
 const db = {
@@ -18,4 +19,4 @@ const db = {
 const logLevel =
   process.env.LOG_LEVEL || (env === 'production' ? 'info' : 'debug');
 
-export { root, env, port, db, logLevel };
+export { rootPath, env, port, db, logLevel };
