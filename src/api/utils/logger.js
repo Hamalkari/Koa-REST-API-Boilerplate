@@ -13,26 +13,21 @@ const consoleFormat = format.combine(
     },
   }),
   format.timestamp({
-    format: new Date(Date.now()).toUTCString(),
+    format: new Date(Date.now()).toString(),
   }),
   format.printf(info => `${info.timestamp} | ${info.level} | ${info.message}`),
 );
 
 const errorFormat = format.combine(
   format.timestamp({
-    format: new Date(Date.now()).toUTCString(),
+    format: new Date(Date.now()).toString(),
   }),
   format.json(),
 );
 
 const logger = createLogger({
   level: logLevel,
-  format: format.json(),
   transports: [
-    new transports.Console({
-      level: 'info',
-      format: consoleFormat,
-    }),
     new transports.File({
       level: 'error',
       filename: errorFilePath,
@@ -40,5 +35,14 @@ const logger = createLogger({
     }),
   ],
 });
+
+if (env !== 'production') {
+  logger.add(
+    new transports.Console({
+      level: 'info',
+      format: consoleFormat,
+    }),
+  );
+}
 
 export default logger;
