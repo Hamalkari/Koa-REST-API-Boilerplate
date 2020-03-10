@@ -21,7 +21,8 @@
 * [License](#license)
 
 ## Todo
-- [ ] Change logger to winston
+- [x] Change logger to winston
+- [ ] Add graceful shutdown server 
 
 ## About the project
 
