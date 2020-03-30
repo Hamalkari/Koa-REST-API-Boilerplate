@@ -44,22 +44,20 @@ This template use the following technologies:
 ## About file structure
 - file **knexfile.js** - our config for database
 - file **app.js** - Here we create server and connect to database
-- folder **services** - Global services like mail
+- folder **services** - Global services like mail,passport auth, helpers
 - file **db/index.js** - Here we create knex with knexfile config
 - folder **config** - Here we import .env file, create config vars and export them
 - folder **api** - Here we have our main core for api
-- folder **api/controllers** - Here we handles incoming requests, validate them and sends response back to the client. It uses **services** to iteract with database.
-- folder **api/routes** - Here we define our API Endpoints.
 - folder **api/utils** - for util function
 - folder **api/errors** - Here we define our custrom error classes
 - folder **api/schema** - Here we define @hapi/joi schema for validation request
 - folder **api/middleware** - This folder includes all the API's global middleware like authentication.
-- folder **api/services** - Here we read and write data to database
+- folder **api/components** - Here we have the heart of our component based API. Each component consists of its own routes, controller, model and service. See the example picture of structure below.
 - file **api/server.js** - Here we create koa app and use koa middleware and add our routes to the app.
 ```
 📦src
  ┣ 📂api
- ┃ ┣ 📂controllers
+ ┃ ┣ 📂components
  ┃ ┃ ┗ 📜.gitkeep
  ┃ ┣ 📂errors
  ┃ ┃ ┣ 📜index.js
@@ -71,22 +69,17 @@ This template use the following technologies:
  ┃ ┃ ┣ 📜body-parser.js
  ┃ ┃ ┣ 📜error.js
  ┃ ┃ ┗ 📜schemaValidator.js
- ┃ ┣ 📂routes
- ┃ ┃ ┗ 📜index.js
  ┃ ┣ 📂schema
- ┃ ┃ ┗ 📜.gitkeep
- ┃ ┣ 📂services
  ┃ ┃ ┗ 📜.gitkeep
  ┃ ┣ 📂utils
  ┃ ┃ ┣ 📜logger.js
  ┃ ┃ ┗ 📜response.js
+ ┃ ┣ 📜routes.js
  ┃ ┗ 📜server.js
  ┣ 📂config
  ┃ ┗ 📜index.js
  ┣ 📂db
  ┃ ┣ 📂migrations
- ┃ ┃ ┗ 📜.gitkeep
- ┃ ┣ 📂models
  ┃ ┃ ┗ 📜.gitkeep
  ┃ ┣ 📂seeds
  ┃ ┃ ┗ 📜.gitkeep
@@ -95,6 +88,17 @@ This template use the following technologies:
  ┃ ┗ 📜.gitkeep
  ┣ 📜app.js
  ┗ 📜knexfile.js
+```
+
+Examle for components structure
+```
+📦components
+ ┣ 📂user
+ ┃ ┣ 📜user.controller.js
+ ┃ ┣ 📜user.model.js
+ ┃ ┣ 📜user.route.js
+ ┃ ┗ 📜user.service.js
+ ┗ 📜.gitkeep
 ```
 ## Getting started
 [Here](#scripts) you can read about all the scripts in the package.json and their description.
