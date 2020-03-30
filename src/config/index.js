@@ -1,7 +1,5 @@
 import dotenv from 'dotenv';
-import { path } from 'app-root-path';
-
-const rootPath = path;
+import { path as rootPath } from 'app-root-path';
 
 dotenv.config({
   path: `${rootPath}/.env`,
